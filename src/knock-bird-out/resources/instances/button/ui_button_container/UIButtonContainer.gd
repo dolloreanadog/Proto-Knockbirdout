@@ -1,5 +1,6 @@
 @tool # So it updates in real-time in editor
 extends Control
+## Contains a custom animated button
 class_name ButtonContainer
 
 #region Objects

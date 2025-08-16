@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7dwtjwuhtfr3"]
+[gd_scene load_steps=7 format=3 uid="uid://b7dwtjwuhtfr3"]
 
 [ext_resource type="Texture2D" uid="uid://cyiecn6a1ypi0" path="res://assets/health_bar/ProgressOver.png" id="1_o8jsa"]
 [ext_resource type="Texture2D" uid="uid://ckkhvma65flv1" path="res://assets/health_bar/ProgressBar.png" id="2_3ctiy"]
 [ext_resource type="Script" path="res://resources/instances/health_bar/PlayerHealthBar.gd" id="3_1mpj2"]
 [ext_resource type="Texture2D" uid="uid://c7o1b3ebgyj5t" path="res://assets/health_bar/FlippedProgressOver.png" id="4_rk8co"]
 [ext_resource type="Texture2D" uid="uid://w23kkw8yvybi" path="res://assets/health_bar/FlippedProgressBar.png" id="5_6x25x"]
+[ext_resource type="PackedScene" uid="uid://c5x2d73he3b46" path="res://resources/instances/button/ui_button_container/UIButtonContainer.tscn" id="6_vh2ph"]
 
 [node name="MainGame" type="Node2D"]
 
@@ -40,7 +41,43 @@ script = ExtResource("3_1mpj2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI"]
 layout_mode = 0
-offset_left = -64.0
-offset_top = 128.0
-offset_right = 192.0
-offset_bottom = 576.0
+offset_left = -72.0
+offset_top = 80.0
+offset_right = 184.0
+offset_bottom = 620.0
+
+[node name="ButtonContainer" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
+layout_mode = 2
+buttonText = "Punch"
+
+[node name="ButtonContainer2" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
+layout_mode = 2
+buttonText = "Uppercut"
+
+[node name="ButtonContainer3" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
+layout_mode = 2
+buttonText = "Intimidation"
+
+[node name="ButtonContainer4" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
+layout_mode = 2
+buttonText = "Power"
+
+[node name="ButtonContainer5" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
+layout_mode = 2
+buttonText = "Block"
+
+[node name="ButtonContainer6" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
+layout_mode = 2
+buttonText = "Dodge"
+
+[node name="ButtonContainer7" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
+layout_mode = 2
+buttonText = "Willpower"
+
+[node name="ButtonContainer8" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
+layout_mode = 2
+buttonText = "Shield"
+
+[node name="Characters" type="Node2D" parent="UI"]
+
+[node name="Player" type="Node2D" parent="UI/Characters"]
