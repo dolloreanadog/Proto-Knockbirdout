@@ -6,6 +6,7 @@ class_name ButtonContainer
 #region Objects
 @onready var button_sprite: AnimatedSprite2D = $ButtonSprite
 @onready var button: UIButton = $Button
+var isReady: bool = false
 #endregion
 
 ## Emitted when person presses the button
@@ -20,12 +21,16 @@ var storedText: String
 	set(value):
 		# So we don't crash on start
 		if (Engine.is_editor_hint()):
-			button.text = value
+			if (is_instance_valid(button)):
+				button.text = value
+			else:
+				storedText = value
 		else:
 			storedText = value
 
 func _ready() -> void:
 	button.text = storedText
+	isReady = true
 
 func OnButtonPressed() -> void:
 	pressed.emit()
