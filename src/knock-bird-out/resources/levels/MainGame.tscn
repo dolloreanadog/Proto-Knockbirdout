@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7dwtjwuhtfr3"]
+
+[ext_resource type="Texture2D" uid="uid://cyiecn6a1ypi0" path="res://assets/health_bar/ProgressOver.png" id="1_o8jsa"]
+[ext_resource type="Texture2D" uid="uid://ckkhvma65flv1" path="res://assets/health_bar/ProgressBar.png" id="2_3ctiy"]
+[ext_resource type="Script" path="res://resources/instances/health_bar/PlayerHealthBar.gd" id="3_1mpj2"]
+[ext_resource type="Texture2D" uid="uid://c7o1b3ebgyj5t" path="res://assets/health_bar/FlippedProgressOver.png" id="4_rk8co"]
+[ext_resource type="Texture2D" uid="uid://w23kkw8yvybi" path="res://assets/health_bar/FlippedProgressBar.png" id="5_6x25x"]
+
+[node name="MainGame" type="Node2D"]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="UI"]
+layout_mode = 0
+offset_top = 24.0
+offset_right = 448.0
+offset_bottom = 64.0
+step = 0.0
+value = 100.0
+texture_over = ExtResource("1_o8jsa")
+texture_progress = ExtResource("2_3ctiy")
+script = ExtResource("3_1mpj2")
+
+[node name="EnemyHealthBar" type="TextureProgressBar" parent="UI"]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 24.0
+offset_right = 1152.0
+offset_bottom = 64.0
+step = 0.0
+value = 100.0
+fill_mode = 1
+texture_over = ExtResource("4_rk8co")
+texture_progress = ExtResource("5_6x25x")
+script = ExtResource("3_1mpj2")
