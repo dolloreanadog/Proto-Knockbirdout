@@ -1,0 +1,127 @@
+[gd_scene load_steps=7 format=3 uid="uid://q1krvxltolxt"]
+
+[ext_resource type="Script" path="res://resources/instances/action_animations/ActionAnimation.gd" id="1_3wmvr"]
+[ext_resource type="Texture2D" uid="uid://b4sbfgjab58ve" path="res://assets/bird/arms/Arms_Block-Uppercut.png" id="1_4h6iv"]
+[ext_resource type="Texture2D" uid="uid://53kgmd3l6wod" path="res://assets/bird/body/aarn-giri.png" id="1_mxh0e"]
+
+[sub_resource type="Animation" id="Animation_jqrhm"]
+resource_name = "PowerAnimation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BirdSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(576, 320), Vector2(512, 264), Vector2(540.805, 328), Vector2(576, 320)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BirdSprite/ArmsBlock-uppercut:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.568185, -1.55264]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BirdSprite/ArmsBlock-uppercut2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-1.46854, -0.568185, -1.46854]
+}
+
+[sub_resource type="Animation" id="Animation_txc2w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BirdSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(576, 320)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BirdSprite/ArmsBlock-uppercut:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.568185]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BirdSprite/ArmsBlock-uppercut2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.568185]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ss8n"]
+_data = {
+"PowerAnimation": SubResource("Animation_jqrhm"),
+"RESET": SubResource("Animation_txc2w")
+}
+
+[node name="ActionAnimation" type="Node2D"]
+script = ExtResource("1_3wmvr")
+
+[node name="BirdSprite" type="Sprite2D" parent="."]
+z_index = 101
+position = Vector2(576, 320)
+rotation = 0.689405
+scale = Vector2(0.395196, 0.395196)
+skew = -0.603884
+texture = ExtResource("1_mxh0e")
+flip_h = true
+
+[node name="ArmsBlock-uppercut" type="Sprite2D" parent="BirdSprite"]
+z_index = -1
+position = Vector2(231.989, -111.279)
+rotation = -0.568185
+scale = Vector2(2.72534, 1.78989)
+skew = -0.603884
+texture = ExtResource("1_4h6iv")
+offset = Vector2(-24.6667, 98)
+flip_h = true
+
+[node name="ArmsBlock-uppercut2" type="Sprite2D" parent="BirdSprite"]
+position = Vector2(130.014, -111.241)
+rotation = -0.568185
+scale = Vector2(2.72534, 1.78989)
+skew = -0.603884
+texture = ExtResource("1_4h6iv")
+offset = Vector2(-25.8693, 100.159)
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6ss8n")
+}
+autoplay = "PowerAnimation"
