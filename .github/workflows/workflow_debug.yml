@@ -16,7 +16,7 @@ on:
 env:
   # Don't use spaces in the paths and name, use underscores _
   GODOT_VERSION: 4.3
-  GODOT_PROJECT_LOCATION: src/project.godot
+  GODOT_PROJECT_LOCATION: src/knock-bird-out/project.godot
   EXPORT_FOLDER_LINUX: bin/Linux
   EXPORT_FOLDER_WINDOWS: bin/Windows
   APPLICATION_NAME: KnockBirdOut
