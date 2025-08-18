@@ -1,18 +1,45 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7dwtjwuhtfr3"]
+[gd_scene load_steps=19 format=3 uid="uid://b7dwtjwuhtfr3"]
 
+[ext_resource type="Script" path="res://resources/levels/MainGame.gd" id="1_fgw0n"]
 [ext_resource type="Texture2D" uid="uid://cyiecn6a1ypi0" path="res://assets/health_bar/ProgressOver.png" id="1_o8jsa"]
 [ext_resource type="Texture2D" uid="uid://53kgmd3l6wod" path="res://assets/bird/body/aarn-giri.png" id="1_swlts"]
 [ext_resource type="Texture2D" uid="uid://ckkhvma65flv1" path="res://assets/health_bar/ProgressBar.png" id="2_3ctiy"]
+[ext_resource type="Script" path="res://resources/instances/character/Player.gd" id="2_l3ll5"]
 [ext_resource type="Script" path="res://resources/instances/health_bar/PlayerHealthBar.gd" id="3_1mpj2"]
+[ext_resource type="PackedScene" uid="uid://b8x3qurlvjyl0" path="res://resources/instances/action_animations/action_player/PunchAnimation.tscn" id="3_3dseq"]
+[ext_resource type="Script" path="res://resources/instances/character/Enemy.gd" id="4_2qdqp"]
+[ext_resource type="PackedScene" uid="uid://dfoj1bddi4nwj" path="res://resources/instances/action_animations/action_player/UppercutAnimation.tscn" id="4_64n1i"]
 [ext_resource type="Texture2D" uid="uid://c7o1b3ebgyj5t" path="res://assets/health_bar/FlippedProgressOver.png" id="4_rk8co"]
 [ext_resource type="Texture2D" uid="uid://w23kkw8yvybi" path="res://assets/health_bar/FlippedProgressBar.png" id="5_6x25x"]
+[ext_resource type="PackedScene" uid="uid://cx63x0ustdrvs" path="res://resources/instances/action_animations/action_player/IntimidationAnimation.tscn" id="5_k7vwh"]
+[ext_resource type="PackedScene" uid="uid://d06mlrv0gbtgd" path="res://resources/instances/action_animations/action_player/PowerAnimation.tscn" id="6_i60hp"]
 [ext_resource type="PackedScene" uid="uid://c5x2d73he3b46" path="res://resources/instances/button/ui_button_container/UIButtonContainer.tscn" id="6_vh2ph"]
+[ext_resource type="PackedScene" uid="uid://dbsghct01x0" path="res://resources/instances/action_animations/action_player/BlockAnimation.tscn" id="7_rqntf"]
+[ext_resource type="PackedScene" uid="uid://do3l50ay35ctp" path="res://resources/instances/action_animations/action_player/DodgeAnimation.tscn" id="8_l0yue"]
+[ext_resource type="PackedScene" uid="uid://dkexh5oibhect" path="res://resources/instances/action_animations/action_player/WillpowerAnimation.tscn" id="9_wqkda"]
+[ext_resource type="PackedScene" uid="uid://tr4gtlpmqsyf" path="res://resources/instances/action_animations/action_player/ShieldAnimation.tscn" id="10_4mq5r"]
 
-[node name="MainGame" type="Node2D"]
+[node name="MainGame" type="Node2D" node_paths=PackedStringArray("player", "enemy")]
+script = ExtResource("1_fgw0n")
+player = NodePath("Characters/Player")
+enemy = NodePath("Characters/Enemy")
+minSeperation = 100
+maxSeperation = 200
 
 [node name="Characters" type="Node2D" parent="."]
 
-[node name="Player" type="Node2D" parent="Characters"]
+[node name="Player" type="CharacterBody2D" parent="Characters" node_paths=PackedStringArray("game", "healthBar")]
+script = ExtResource("2_l3ll5")
+game = NodePath("../..")
+healthBar = NodePath("../../UI/PlayerHealthBar")
+OffensiveAction1 = ExtResource("3_3dseq")
+OffensiveAction2 = ExtResource("4_64n1i")
+OffensiveAction3 = ExtResource("5_k7vwh")
+OffensiveAction4 = ExtResource("6_i60hp")
+DefensiveAction1 = ExtResource("7_rqntf")
+DefensiveAction2 = ExtResource("8_l0yue")
+DefensiveAction3 = ExtResource("9_wqkda")
+DefensiveAction4 = ExtResource("10_4mq5r")
 
 [node name="Aarn-giri" type="Sprite2D" parent="Characters/Player"]
 position = Vector2(272, 320)
@@ -20,9 +47,20 @@ scale = Vector2(0.36833, 0.372635)
 texture = ExtResource("1_swlts")
 flip_h = true
 
-[node name="Node2D" type="Node2D" parent="Characters"]
+[node name="Enemy" type="CharacterBody2D" parent="Characters" node_paths=PackedStringArray("game", "healthBar")]
+script = ExtResource("4_2qdqp")
+game = NodePath("../..")
+healthBar = NodePath("../../UI/EnemyHealthBar")
+OffensiveAction1 = ExtResource("3_3dseq")
+OffensiveAction2 = ExtResource("4_64n1i")
+OffensiveAction3 = ExtResource("5_k7vwh")
+OffensiveAction4 = ExtResource("6_i60hp")
+DefensiveAction1 = ExtResource("7_rqntf")
+DefensiveAction2 = ExtResource("8_l0yue")
+DefensiveAction3 = ExtResource("9_wqkda")
+DefensiveAction4 = ExtResource("10_4mq5r")
 
-[node name="Aarn-giri" type="Sprite2D" parent="Characters/Node2D"]
+[node name="Aarn-giri" type="Sprite2D" parent="Characters/Enemy"]
 position = Vector2(880, 320)
 scale = Vector2(0.367049, 0.372635)
 texture = ExtResource("1_swlts")
@@ -64,35 +102,35 @@ offset_top = 80.0
 offset_right = 184.0
 offset_bottom = 620.0
 
-[node name="ButtonContainer" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
+[node name="Punch" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
 layout_mode = 2
 buttonText = "Punch"
 
-[node name="ButtonContainer2" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
+[node name="Uppercut" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
 layout_mode = 2
 buttonText = "Uppercut"
 
-[node name="ButtonContainer3" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
+[node name="Intimidation" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
 layout_mode = 2
 buttonText = "Intimidation"
 
-[node name="ButtonContainer4" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
+[node name="Power" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
 layout_mode = 2
 buttonText = "Power"
 
-[node name="ButtonContainer5" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
+[node name="Block" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
 layout_mode = 2
 buttonText = "Block"
 
-[node name="ButtonContainer6" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
+[node name="Dodge" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
 layout_mode = 2
 buttonText = "Dodge"
 
-[node name="ButtonContainer7" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
+[node name="Willpower" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
 layout_mode = 2
 buttonText = "Willpower"
 
-[node name="ButtonContainer8" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
+[node name="Shield" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
 layout_mode = 2
 buttonText = "Shield"
 
@@ -104,4 +142,51 @@ offset_top = 192.0
 offset_right = 544.0
 offset_bottom = 448.0
 
+[node name="WinLabelContainer" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WinLabel" type="Label" parent="UI/WinLabelContainer"]
+visible = false
+layout_mode = 0
+offset_left = -556.0
+offset_top = -48.0
+offset_right = 596.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 71
+text = "You Won"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LostLabel" type="Label" parent="UI/WinLabelContainer"]
+visible = false
+layout_mode = 0
+offset_left = -556.0
+offset_top = -48.0
+offset_right = 596.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 71
+text = "You Lost"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="pressed" from="UI/VBoxContainer/Punch" to="Characters/Player" method="_on_punch_pressed"]
+[connection signal="pressed" from="UI/VBoxContainer/Uppercut" to="Characters/Player" method="_on_uppercut_pressed"]
+[connection signal="pressed" from="UI/VBoxContainer/Intimidation" to="Characters/Player" method="_on_intimidation_pressed"]
+[connection signal="pressed" from="UI/VBoxContainer/Power" to="Characters/Player" method="_on_power_pressed"]
+[connection signal="pressed" from="UI/VBoxContainer/Block" to="Characters/Player" method="_on_block_pressed"]
+[connection signal="pressed" from="UI/VBoxContainer/Dodge" to="Characters/Player" method="_on_dodge_pressed"]
+[connection signal="pressed" from="UI/VBoxContainer/Willpower" to="Characters/Player" method="_on_willpower_pressed"]
+[connection signal="pressed" from="UI/VBoxContainer/Shield" to="Characters/Player" method="_on_shield_pressed"]
