@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://q1krvxltolxt"]
+[gd_scene load_steps=7 format=3 uid="uid://d06mlrv0gbtgd"]
 
-[ext_resource type="Script" path="res://resources/instances/action_animations/ActionAnimation.gd" id="1_3wmvr"]
-[ext_resource type="Texture2D" uid="uid://b4sbfgjab58ve" path="res://assets/bird/arms/Arms_Block-Uppercut.png" id="1_4h6iv"]
-[ext_resource type="Texture2D" uid="uid://53kgmd3l6wod" path="res://assets/bird/body/aarn-giri.png" id="1_mxh0e"]
+[ext_resource type="Script" path="res://resources/instances/action_animations/ActionAnimation.gd" id="1_3x3vt"]
+[ext_resource type="Texture2D" uid="uid://53kgmd3l6wod" path="res://assets/bird/body/aarn-giri.png" id="2_6a0ly"]
+[ext_resource type="Texture2D" uid="uid://b4sbfgjab58ve" path="res://assets/bird/arms/Arms_Block-Uppercut.png" id="3_x4eu8"]
 
 [sub_resource type="Animation" id="Animation_jqrhm"]
 resource_name = "PowerAnimation"
@@ -16,7 +16,7 @@ tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 0.733333, 1, 1.5, 1.73333, 2, 2.5, 2.73333, 3, 3.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.0824693),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 29.8571),
 "update": 0,
 "values": [Vector2(320, 128), Vector2(512, 264), Vector2(540.805, 328), Vector2(576, 320), Vector2(512, 264), Vector2(540.805, 328), Vector2(576, 320), Vector2(512, 264), Vector2(540.805, 328), Vector2(576, 320), Vector2(1048, 704)]
 }
@@ -104,8 +104,8 @@ _data = {
 "RESET": SubResource("Animation_txc2w")
 }
 
-[node name="ActionAnimation" type="Node2D"]
-script = ExtResource("1_3wmvr")
+[node name="PowerAnimation" type="Node2D"]
+script = ExtResource("1_3x3vt")
 
 [node name="BirdSprite" type="Sprite2D" parent="."]
 z_index = 101
@@ -113,7 +113,7 @@ position = Vector2(576, 320)
 rotation = 0.689405
 scale = Vector2(0.395196, 0.395196)
 skew = -0.603884
-texture = ExtResource("1_mxh0e")
+texture = ExtResource("2_6a0ly")
 flip_h = true
 
 [node name="ArmsBlock-uppercut" type="Sprite2D" parent="BirdSprite"]
@@ -122,7 +122,7 @@ position = Vector2(231.989, -111.279)
 rotation = -0.568185
 scale = Vector2(2.72534, 1.78989)
 skew = -0.603884
-texture = ExtResource("1_4h6iv")
+texture = ExtResource("3_x4eu8")
 offset = Vector2(-24.6667, 98)
 flip_h = true
 
@@ -131,7 +131,7 @@ position = Vector2(130.014, -111.241)
 rotation = -0.568185
 scale = Vector2(2.72534, 1.78989)
 skew = -0.603884
-texture = ExtResource("1_4h6iv")
+texture = ExtResource("3_x4eu8")
 offset = Vector2(-25.8693, 100.159)
 flip_h = true
 
