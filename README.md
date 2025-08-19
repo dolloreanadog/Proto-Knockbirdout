@@ -1,7 +1,9 @@
 Uses Godot 4.3
 -- HOW TO USE --
-1. Run Executable
-2. Press Start Button
+
+1. Download a build from Github Actions
+2. Run Executable
+3. Press Start Button
 
 There are 8 total action, 4 offensive and 4 defensive.
 All actions have a counterpart, each defensive action counters their other part. Stunning them.
