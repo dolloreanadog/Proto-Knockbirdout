@@ -13,22 +13,16 @@ var isReady: bool = false
 signal pressed
 
 ## Text for when run in actual game
-var storedText: String
+@export var storedText: String
 ## Changes the button text
 @export var buttonText: String:
 	get:
-		return button.text
+		return storedText
 	set(value):
-		# So we don't crash on start
-		if (Engine.is_editor_hint()):
-			if (is_instance_valid(button)):
-				button.text = value
-			else:
-				storedText = value
-		else:
-			storedText = value
+		storedText = value
 
 func _ready() -> void:
+	print("%s Stored Text: %s" % [name, storedText])
 	button.text = storedText
 	isReady = true
 

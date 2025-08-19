@@ -494,10 +494,12 @@ theme = ExtResource("2_sidtw")
 
 [node name="StartButtonContainer" parent="Control/VBoxContainer" instance=ExtResource("4_24qno")]
 layout_mode = 2
+storedText = "Start"
 buttonText = "Start"
 
 [node name="ExitButtonContainer2" parent="Control/VBoxContainer" instance=ExtResource("4_24qno")]
 layout_mode = 2
+storedText = "Exit"
 buttonText = "Exit"
 
 [connection signal="pressed" from="Control/VBoxContainer/StartButtonContainer" to="." method="OnStartButtonPressed"]

@@ -104,34 +104,42 @@ offset_bottom = 620.0
 
 [node name="Punch" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
 layout_mode = 2
+storedText = "Punch"
 buttonText = "Punch"
 
 [node name="Uppercut" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
 layout_mode = 2
+storedText = "Uppercut"
 buttonText = "Uppercut"
 
 [node name="Intimidation" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
 layout_mode = 2
+storedText = "Intimidation"
 buttonText = "Intimidation"
 
 [node name="Power" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
 layout_mode = 2
+storedText = "Power"
 buttonText = "Power"
 
 [node name="Block" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
 layout_mode = 2
+storedText = "Block"
 buttonText = "Block"
 
 [node name="Dodge" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
 layout_mode = 2
+storedText = "Dodge"
 buttonText = "Dodge"
 
 [node name="Willpower" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
 layout_mode = 2
+storedText = "Willpower"
 buttonText = "Willpower"
 
 [node name="Shield" parent="UI/VBoxContainer" instance=ExtResource("6_vh2ph")]
 layout_mode = 2
+storedText = "Shield"
 buttonText = "Shield"
 
 [node name="ColorRect" type="ColorRect" parent="UI"]
